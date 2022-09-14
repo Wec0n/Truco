@@ -2,7 +2,7 @@ using Truco.Entities.Enums;
 using System.Text;
 
 namespace Truco.Entities;
-public class Carta {
+class Carta {
     public Valor Valor { get; set; }
     public string Naipe { get; set; }
     public int Pontos { get; set; }
@@ -22,5 +22,15 @@ public class Carta {
         sb.AppendLine("Pontos: " + Pontos);
 
         return sb.ToString();
+    }
+
+    public override bool Equals(object obj) {
+        if (!(obj is Carta)) {
+            return false;
+        }
+
+        Carta outra = obj as Carta;
+
+        return Valor.Equals(outra.Valor);
     }
 }
