@@ -19,9 +19,11 @@ class Jogador {
                 Baralho.Cartas.Remove(Carta);
             }
         }
+
+        PontosDoJogador = Pontos();
     }
 
-    public void Pontos() {
+    public int Pontos() {
         int contador = 0;
         int total = 0;
         for (int i = 0; i < CartasDoJogador.Count; i++) {
@@ -31,19 +33,25 @@ class Jogador {
                 }
                 if (CartasDoJogador.ElementAt(i).Naipe == CartasDoJogador.ElementAt(j).Naipe) {
                     contador++;
-                    total = CartasDoJogador.ElementAt(i).Pontos + CartasDoJogador.ElementAt(j).Pontos;
+                    total = CartasDoJogador.ElementAt(i).Pontos + CartasDoJogador.ElementAt(j).Pontos + 20;
                 }
             }
         }
-        Console.WriteLine(contador);
-        Console.WriteLine(total);
+        if (contador == 0) {
+            total += CartasDoJogador.MaxBy(x => x.Pontos).Pontos;
+        }
+
+        return total;
     }
 
     public override string ToString() {
         StringBuilder sb = new StringBuilder();
 
         foreach(Carta c in CartasDoJogador) {
-            sb.AppendLine(c.Numero.ToString() + " - " + c.Naipe.ToString());
+            // sb.AppendLine(c.Numero.ToString() + " - " + c.Naipe.ToString());
+
+            sb.AppendLine(c.ToString());
+            sb.AppendLine("Pontos: " + PontosDoJogador);
         }
 
         return sb.ToString();

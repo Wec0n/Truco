@@ -22,7 +22,7 @@ class Carta {
         sb.AppendLine("Nome: " + Nome);
         sb.AppendLine("Valor: " + Valor);
         sb.AppendLine("Naipe: " + Naipe);
-        sb.AppendLine("Pontos: " + Pontos);
+        sb.AppendLine("Pontos da carta: " + Pontos);
         sb.AppendLine("Número: " + Numero);
 
         return sb.ToString();

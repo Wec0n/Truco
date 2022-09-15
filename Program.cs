@@ -9,7 +9,7 @@ class Program {
 
         Jogador j1 = new Jogador();
         Console.WriteLine(j1);
-        j1.Pontos();
+        
         // Jogador j2 = new Jogador();
         // Console.WriteLine(j2);
         // Jogador j3 = new Jogador();
