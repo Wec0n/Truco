@@ -51,8 +51,9 @@ class Jogador {
             // sb.AppendLine(c.Numero.ToString() + " - " + c.Naipe.ToString());
 
             sb.AppendLine(c.ToString());
-            sb.AppendLine("Pontos: " + PontosDoJogador);
         }
+
+        sb.AppendLine("Pontos do Jogador: " + PontosDoJogador);
 
         return sb.ToString();
     }
