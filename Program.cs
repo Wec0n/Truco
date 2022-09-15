@@ -3,65 +3,41 @@
 namespace Truco;
 class Program {
     static void Main(string[] args) {
-        // Carta c1 = new Carta();
+        Random rand = new Random();
 
-        // Console.WriteLine(c1);
+        Baralho.CriarBaralho();
 
-        List<Carta> Cartas = new List<Carta>();
+        Jogador j1 = new Jogador();
+        Console.WriteLine(j1);
+        j1.Pontos();
+        // Jogador j2 = new Jogador();
+        // Console.WriteLine(j2);
+        // Jogador j3 = new Jogador();
+        // Console.WriteLine(j3);
+        // Jogador j4 = new Jogador();
+        // Console.WriteLine(j4);
+        // Jogador j5 = new Jogador();
+        // Console.WriteLine(j5);
+        // Jogador j6 = new Jogador();
+        // Console.WriteLine(j6);
 
-        Cartas.Add(new Carta("Ás de espada", 14, "Espada", 1)); // Ás de espada
-        Cartas.Add(new Carta("Ás de basto", 13, "Basto", 1));  // Ás de basto
-        Cartas.Add(new Carta("Manilha de Espada", 12, "Espada", 7)); // Manilha de espada
-        Cartas.Add(new Carta("Manilha de ouro", 11, "Ouro", 7));   // Manilha de ouro
+        // Carta c1 = Baralho.Cartas.ElementAt(rand.Next(0, 3));
+        // Carta c1 = Baralho.Cartas.ElementAt(4); // três de espada
+        // Carta c2 = Baralho.Cartas.ElementAt(5); // três de basto
+        // Carta c3 = Baralho.Cartas.ElementAt(8); // dois de espada
+        // Carta c4 = Baralho.Cartas.ElementAt(0); // ás de espada
+        // Carta c5 = Baralho.Cartas.ElementAt(0); // ás de espada
+    }
 
-        Cartas.Add(new Carta("Três de espada", 10, "Espada", 3)); // Três
-        Cartas.Add(new Carta("Três de basto", 10, "Basto", 3));  // Três
-        Cartas.Add(new Carta("Três de ouro", 10, "Ouro", 3));   // Três
-        Cartas.Add(new Carta("Três de copa", 10, "Copa", 3));   // Três
-
-        Cartas.Add(new Carta("Dois de espada", 9, "Espada", 2));  // Dois
-        Cartas.Add(new Carta("Dois de basto", 9, "Basto", 2));   // Dois
-        Cartas.Add(new Carta("Dois de ouro", 9, "Ouro", 2));    // Dois
-        Cartas.Add(new Carta("Dois de copa", 9, "Copa", 2));    // Dois
-
-        Cartas.Add(new Carta("Ás de ouro", 8, "Ouro", 1));    // Ás de ouro
-        Cartas.Add(new Carta("Ás de copa", 8, "Copa", 1));    // Ás de copa
-
-        Cartas.Add(new Carta("Rei de espada", 7, "Espada", 0));  // Rei
-        Cartas.Add(new Carta("Rei de basto", 7, "Basto", 0));   // Rei
-        Cartas.Add(new Carta("Rei de ouro", 7, "Ouro", 0));    // Rei
-        Cartas.Add(new Carta("Rei de copa", 7, "Copa", 0));    // Rei
-
-        Cartas.Add(new Carta("Cavalo de espada", 6, "Espada", 0));  // Cavalo
-        Cartas.Add(new Carta("Cavalo de basto", 6, "Basto", 0));   // Cavalo
-        Cartas.Add(new Carta("Cavalo de ouro", 6, "Ouro", 0));    // Cavalo
-        Cartas.Add(new Carta("Cavalo de copa", 6, "Copa", 0));    // Cavalo
-
-        Cartas.Add(new Carta("Sota de espada", 5, "Espada", 0));  // Sota
-        Cartas.Add(new Carta("Sota de basto", 5, "Basto", 0));   // Sota
-        Cartas.Add(new Carta("Sota de ouro", 5, "Ouro", 0));    // Sota
-        Cartas.Add(new Carta("Sota de copa", 5, "Copa", 0));    // Sota
-
-        Cartas.Add(new Carta("Sete de basto", 4, "Basto", 7));   // Sete de basto
-        Cartas.Add(new Carta("Sete de copa", 4, "Copa", 7));    // Sete de copa
-
-        Cartas.Add(new Carta("Seis de espada", 3, "Espada", 6));  // Seis
-        Cartas.Add(new Carta("Seis de basto", 3, "Basto", 6));   // Seis
-        Cartas.Add(new Carta("Seis de ouro", 3, "Ouro", 6));    // Seis
-        Cartas.Add(new Carta("Seis de copa", 3, "Copa", 6));    // Seis
-
-        Cartas.Add(new Carta("Cinco de espada", 2, "Espada", 5));  // Cinco
-        Cartas.Add(new Carta("Cinco de basto", 2, "Basto", 5));   // Cinco
-        Cartas.Add(new Carta("Cinco de ouro", 2, "Ouro", 5));    // Cinco
-        Cartas.Add(new Carta("Cinco de copa", 2, "Copa", 5));    // Cinco
-
-        Cartas.Add(new Carta("Quatro de espada", 1, "Espada", 4));  // Quatro
-        Cartas.Add(new Carta("Quatro de basto", 1, "Basto", 4));   // Quatro
-        Cartas.Add(new Carta("Quatro de ouro", 1, "Ouro", 4));    // Quatro
-        Cartas.Add(new Carta("Quatro de copa", 1, "Copa", 4));    // Quatro
-
-        foreach(Carta c in Cartas) {
-            Console.WriteLine(c);
+    static void Joagada(Carta c1, Carta c2) {
+        if (c1.Valor > c2.Valor) {
+            Console.WriteLine(c1.Nome + " é maior que " + c2.Nome);
+        } else if ((c1.Valor < c2.Valor)) {
+            Console.WriteLine(c2.Nome + " é maior que " + c1.Nome);
+        } else if ((c1.Valor == c2.Valor) && (c1.Naipe == c2.Naipe)) {
+            Console.WriteLine("Carta 1 e carta 2 são a mesma carta: " + c1.Nome);
+        } else {
+            Console.WriteLine(c1.Nome + " e " + c2.Nome + " têm o mesmo valor");
         }
     }
 }
