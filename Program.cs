@@ -5,7 +5,7 @@ class Program {
     static void Main(string[] args) {
         Random rand = new Random();
 
-        Baralho.CriarBaralho();
+        // Baralho.CriarBaralho();
 
         // Jogador j1 = new Jogador();
         // Console.WriteLine(j1);
@@ -32,27 +32,38 @@ class Program {
         // Carta c4 = Baralho.Cartas.ElementAt(0); // ás de espada
         // Carta c5 = Baralho.Cartas.ElementAt(0); // ás de espada
 
-        List<Jogador> jogadores = new List<Jogador>();
 
-        for (int i = 0; i < 6; i++) {
-            jogadores.Add(new Jogador());
+        // SALVAR OS JOGADORES EM UM ARQUIVO DE TEXTO (TESTES!)
+        string path = @"C:\Development\csharp\Truco\jogadores-testes.txt";
+        for (int j = 0; j < 100; j++) { // Criação de listas de 6 jogadores
+            Baralho.CriarBaralho();
+            List<Jogador> jogadores = new List<Jogador>();
+            for (int i = 0; i < 6; i++) {
+                jogadores.Add(new Jogador());
+            }
+            using (StreamWriter sw = File.AppendText(path)) {
+                foreach (Jogador k in jogadores) {
+                    Console.WriteLine(k);
+                    Console.WriteLine("----------------------------------------------------------------");
+                    sw.WriteLine(k);
+                    sw.WriteLine("----------------------------------------------------------------");
+                }
+            }
         }
+        // SALVAR OS JOGADORES EM UM ARQUIVO DE TEXTO (TESTES!)
 
-        foreach (Jogador j in jogadores) {
-            Console.WriteLine(j);
-            Console.WriteLine("----------------------------------------------------------------");
-        }
 
-        Console.WriteLine("----------------------------------------------------------------");
-        Console.WriteLine("----------------------------------------------------------------");
-        Console.WriteLine("----------------------------------------------------------------");
-        foreach (Carta c in Baralho.Cartas) {
-            Console.WriteLine(c);
-        }
-        Console.WriteLine("Sobra: " + Baralho.Cartas.Count);
-        Console.WriteLine("----------------------------------------------------------------");
-        Console.WriteLine("----------------------------------------------------------------");
-        Console.WriteLine("----------------------------------------------------------------");
+        // Console.WriteLine("----------------------------------------------------------------");
+        // Console.WriteLine("----------------------------------------------------------------");
+        // Console.WriteLine("----------------------------------------------------------------");
+        // foreach (Carta c in Baralho.Cartas) {
+        //     Console.WriteLine(c);
+        // }
+        // Console.WriteLine("Sobra: " + Baralho.Cartas.Count);
+        // Console.WriteLine("----------------------------------------------------------------");
+        // Console.WriteLine("----------------------------------------------------------------");
+        // Console.WriteLine("----------------------------------------------------------------");
+
     }
 
     static void Joagada(Carta c1, Carta c2) {
