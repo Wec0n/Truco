@@ -2,59 +2,61 @@ using System.Text;
 
 namespace Truco.Entities;
 class Jogador {
-    List<Carta> CartasDoJogador { get; set; } = new List<Carta>(3);
-    public int PontosDoJogador { get; set; }
-    public bool Flor { get; set; }
+    List<Carta> ListaDeCartas { get; set; }
+    public int PontosDoJogador { get; private set; }
+    public bool Flor { get; private set; }
 
     public Jogador() {
+        ListaDeCartas = GerarCartas();
+        PontosDoJogador = Pontos();
+    }
+
+    public List<Carta> GerarCartas() {
+        List<Carta> ListaDeCartas = new List<Carta>(3);
         Random rand = new Random();
-        while (CartasDoJogador.Count < 3) {
+        while (ListaDeCartas.Count < 3) {
             int IndiceQuantidadeBaralho = Baralho.Cartas.Count;
             int IndiceDaCarta = rand.Next(IndiceQuantidadeBaralho);
-
             Carta Carta = Baralho.Cartas.ElementAt(IndiceDaCarta);
-
-            if (CartasDoJogador.IndexOf(Carta) < 0) {
-                CartasDoJogador.Add(Carta);
+            if (ListaDeCartas.IndexOf(Carta) < 0) {
+                ListaDeCartas.Add(Carta);
                 Baralho.Cartas.Remove(Carta);
             }
         }
-
-        PontosDoJogador = Pontos();
+        return ListaDeCartas;
     }
 
     public int Pontos() {
         int contador = 0;
         int total = 0;
-        for (int i = 0; i < CartasDoJogador.Count; i++) {
-            for (int j = 0; j < CartasDoJogador.Count; j++) {
+        for (int i = 0; i < ListaDeCartas.Count; i++) {
+            for (int j = 0; j < ListaDeCartas.Count; j++) {
                 if (i == j) {
                     break;
                 }
-                if ((CartasDoJogador.ElementAt(i).Naipe == CartasDoJogador.ElementAt(j).Naipe)) {
+                if ((ListaDeCartas.ElementAt(i).Naipe == ListaDeCartas.ElementAt(j).Naipe)) {
                     contador++;
-                    total = CartasDoJogador.ElementAt(i).Pontos + CartasDoJogador.ElementAt(j).Pontos + 20;
+                    total = ListaDeCartas.ElementAt(i).Pontos + ListaDeCartas.ElementAt(j).Pontos + 20;
                 }
             }
         }
         if (contador == 3) {
             Flor = true;
             total = 20;
-            foreach (Carta c in CartasDoJogador) {
+            foreach (Carta c in ListaDeCartas) {
                 total += c.Pontos;
             }
         }
         if (contador == 0) {
-            total += CartasDoJogador.MaxBy(x => x.Pontos).Pontos;
+            total += ListaDeCartas.MaxBy(x => x.Pontos).Pontos;
         }
-
         return total;
     }
 
     public override string ToString() {
         StringBuilder sb = new StringBuilder();
 
-        foreach(Carta c in CartasDoJogador) {
+        foreach(Carta c in ListaDeCartas) {
             // sb.AppendLine(c.Numero.ToString() + " - " + c.Naipe.ToString());
 
             sb.AppendLine(c.ToString());
