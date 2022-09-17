@@ -7,17 +7,21 @@ class Program {
 
         Baralho.CriarBaralho();
 
-        Jogador j1 = new Jogador();
-        Console.WriteLine(j1);
-        
+        // Jogador j1 = new Jogador();
+        // Console.WriteLine(j1);
+        // Console.WriteLine("---------------------------------------------------");
         // Jogador j2 = new Jogador();
         // Console.WriteLine(j2);
+        // Console.WriteLine("---------------------------------------------------");
         // Jogador j3 = new Jogador();
         // Console.WriteLine(j3);
+        // Console.WriteLine("---------------------------------------------------");
         // Jogador j4 = new Jogador();
         // Console.WriteLine(j4);
+        // Console.WriteLine("---------------------------------------------------");
         // Jogador j5 = new Jogador();
         // Console.WriteLine(j5);
+        // Console.WriteLine("---------------------------------------------------");
         // Jogador j6 = new Jogador();
         // Console.WriteLine(j6);
 
@@ -27,6 +31,17 @@ class Program {
         // Carta c3 = Baralho.Cartas.ElementAt(8); // dois de espada
         // Carta c4 = Baralho.Cartas.ElementAt(0); // ás de espada
         // Carta c5 = Baralho.Cartas.ElementAt(0); // ás de espada
+
+        List<Jogador> jogadores = new List<Jogador>();
+
+        for (int i = 0; i < 13; i++) {
+            jogadores.Add(new Jogador());
+        }
+
+        foreach (Jogador j in jogadores) {
+            Console.WriteLine(j);
+            Console.WriteLine("----------------------------------------------------------------");
+        }
     }
 
     static void Joagada(Carta c1, Carta c2) {

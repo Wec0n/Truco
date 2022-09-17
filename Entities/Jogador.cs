@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Truco.Entities;
 class Jogador {
-    List<Carta> CartasDoJogador { get; set; } = new List<Carta>(3);
+    public List<Carta> CartasDoJogador { get; set; } = new List<Carta>(3);
     public int PontosDoJogador { get; set; }
     public bool Flor { get; set; }
 
@@ -31,10 +31,17 @@ class Jogador {
                 if (i == j) {
                     break;
                 }
-                if (CartasDoJogador.ElementAt(i).Naipe == CartasDoJogador.ElementAt(j).Naipe) {
+                if ((CartasDoJogador.ElementAt(i).Naipe == CartasDoJogador.ElementAt(j).Naipe)) {
                     contador++;
                     total = CartasDoJogador.ElementAt(i).Pontos + CartasDoJogador.ElementAt(j).Pontos + 20;
                 }
+            }
+        }
+        if (contador == 3) {
+            Flor = true;
+            total = 20;
+            foreach (Carta c in CartasDoJogador) {
+                total += c.Pontos;
             }
         }
         if (contador == 0) {
@@ -53,18 +60,13 @@ class Jogador {
             sb.AppendLine(c.ToString());
         }
 
-        sb.AppendLine("Pontos do Jogador: " + PontosDoJogador);
+        sb.AppendLine("Tem Flor: " + Flor);
+        if (!Flor) {
+            sb.AppendLine("Pontos do envido: " + PontosDoJogador);
+        } else {
+            sb.AppendLine("Pontos da flor: " + PontosDoJogador);
+        }
 
         return sb.ToString();
     }
-
-    // public override bool Equals(object obj) {
-    //     if(!(obj is Carta)) {
-    //         return false;
-    //     }
-
-    //     Carta outra = obj as Carta;
-
-    //     return Valor.Equals(outra.Valor) && Naipe.Equals(outra.Naipe);
-    // }
 }
