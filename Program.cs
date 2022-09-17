@@ -34,7 +34,7 @@ class Program {
 
         List<Jogador> jogadores = new List<Jogador>();
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 6; i++) {
             jogadores.Add(new Jogador());
         }
 
@@ -42,6 +42,17 @@ class Program {
             Console.WriteLine(j);
             Console.WriteLine("----------------------------------------------------------------");
         }
+
+        Console.WriteLine("----------------------------------------------------------------");
+        Console.WriteLine("----------------------------------------------------------------");
+        Console.WriteLine("----------------------------------------------------------------");
+        foreach (Carta c in Baralho.Cartas) {
+            Console.WriteLine(c);
+        }
+        Console.WriteLine("Sobra: " + Baralho.Cartas.Count);
+        Console.WriteLine("----------------------------------------------------------------");
+        Console.WriteLine("----------------------------------------------------------------");
+        Console.WriteLine("----------------------------------------------------------------");
     }
 
     static void Joagada(Carta c1, Carta c2) {

@@ -2,14 +2,14 @@ using System.Text;
 
 namespace Truco.Entities;
 class Jogador {
-    public List<Carta> CartasDoJogador { get; set; } = new List<Carta>(3);
+    List<Carta> CartasDoJogador { get; set; } = new List<Carta>(3);
     public int PontosDoJogador { get; set; }
     public bool Flor { get; set; }
 
     public Jogador() {
         Random rand = new Random();
         while (CartasDoJogador.Count < 3) {
-            int IndiceQuantidadeBaralho = Baralho.Cartas.Count - 1;
+            int IndiceQuantidadeBaralho = Baralho.Cartas.Count;
             int IndiceDaCarta = rand.Next(IndiceQuantidadeBaralho);
 
             Carta Carta = Baralho.Cartas.ElementAt(IndiceDaCarta);
