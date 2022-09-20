@@ -1,14 +1,16 @@
 using System.Text;
 
 namespace Truco.Entities;
-class Jogador {
-    List<Carta> ListaDeCartas { get; set; }
+public class Jogador {
+    public List<Carta> ListaDeCartas { get; set; }
     public int PontosDoJogador { get; private set; }
     public bool Flor { get; private set; }
+    public Mesa Mesa { get; set; }
 
-    public Jogador() {
+    public Jogador(Mesa mesa) {
         ListaDeCartas = GerarCartas();
         PontosDoJogador = Pontos();
+        Mesa = mesa;
     }
 
     public List<Carta> GerarCartas() {
@@ -53,21 +55,20 @@ class Jogador {
         return total;
     }
 
+    public void JogarCarta() {
+        Mesa.Posicoes[0, 0] = ListaDeCartas.ElementAt(0);
+        ListaDeCartas.Remove(ListaDeCartas.ElementAt(0));
+    }
+
     public override string ToString() {
         StringBuilder sb = new StringBuilder();
 
         foreach(Carta c in ListaDeCartas) {
-            // sb.AppendLine(c.Numero.ToString() + " - " + c.Naipe.ToString());
-
             sb.AppendLine(c.ToString());
         }
 
-        sb.AppendLine("Tem Flor: " + Flor);
-        if (!Flor) {
-            sb.AppendLine("Pontos do envido: " + PontosDoJogador);
-        } else {
-            sb.AppendLine("Pontos da flor: " + PontosDoJogador);
-        }
+        sb.AppendLine("Pontos: " + PontosDoJogador);
+        sb.AppendLine("Tem flor: " + Flor);
 
         return sb.ToString();
     }
