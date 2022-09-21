@@ -54,9 +54,14 @@ public class Jogador {
     //     return total;
     // }
 
-    public void JogarCarta(int posicao) {
-        Mesa.Posicoes[0, 0] = ListaDeCartas.ElementAt(posicao);
-        ListaDeCartas.Remove(ListaDeCartas.ElementAt(posicao));
+    public void JogarCarta(int posicaoDaCarta) {
+        for (int i = 0; i < Mesa.Posicoes.GetLength(1); i++) {
+            if (Mesa.Posicoes[Mesa.JogadoresDaMesa.IndexOf(this), i] == null) {
+                Mesa.Posicoes[Mesa.JogadoresDaMesa.IndexOf(this), i] = ListaDeCartas.ElementAt(posicaoDaCarta);
+                ListaDeCartas.Remove(ListaDeCartas.ElementAt(posicaoDaCarta));
+                break;
+            }
+        }
     }
 
     public override string ToString() {

@@ -23,12 +23,12 @@ public class Partida {
             int total = 0;
             for (int j = 0; j < MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.Count; j++) {
                 for (int k = 0; k < MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.Count; k++) {
-                    if (i == j) {
+                    if (j == k) {
                         break;
                     }
-                    if ((MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(i).Naipe == MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(j).Naipe)) {
+                    if ((MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(j).Naipe == MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(k).Naipe)) {
                         contador++;
-                        total = MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(i).Pontos + MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(j).Pontos + 20;
+                        total = MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(j).Pontos + MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.ElementAt(k).Pontos + 20;
                     }
                 }
             }
@@ -42,6 +42,8 @@ public class Partida {
             if (contador == 0) {
                 total += MesaDaJogada.JogadoresDaMesa[i].ListaDeCartas.MaxBy(x => x.Pontos).Pontos;
             }
+            MesaDaJogada.JogadoresDaMesa[i].PontosDoJogador += total;
+            Console.WriteLine("dfsfds45f4sd54fs5df45sd - " + contador);
         }
     }
 
