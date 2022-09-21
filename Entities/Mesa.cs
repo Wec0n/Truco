@@ -28,6 +28,7 @@ public class Mesa {
             }
             sb.AppendLine();
         }
+        sb.AppendLine("///////////////////////////////////////////////////////////////////////////");
         foreach(Jogador j in JogadoresDaMesa) {
             sb.AppendLine(j.ToString());
             sb.AppendLine("------------------------------------------------------");

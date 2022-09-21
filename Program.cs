@@ -6,9 +6,8 @@ class Program {
         Partida p1 = new Partida();
         Console.WriteLine(p1);
         
+        p1.MesaDaJogada.JogadoresDaMesa[0].JogarCarta(0);
         
-        p1.MesaDaJogada.JogadoresDaMesa[0].JogarCarta();
-
         Console.WriteLine(p1);
     }
 }
