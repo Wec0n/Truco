@@ -59,17 +59,17 @@
 //         Console.WriteLine(j6);
 //     }
 
-//     public static void CompararCartas(Carta c1, Carta c2) {
-//         if (c1.Valor > c2.Valor) {
-//             Console.WriteLine(c1.Nome + " é maior que " + c2.Nome);
-//         } else if ((c1.Valor < c2.Valor)) {
-//             Console.WriteLine(c2.Nome + " é maior que " + c1.Nome);
-//         } else if ((c1.Valor == c2.Valor) && (c1.Naipe == c2.Naipe)) {
-//             Console.WriteLine("Carta 1 e carta 2 são a mesma carta: " + c1.Nome);
-//         } else {
-//             Console.WriteLine(c1.Nome + " e " + c2.Nome + " têm o mesmo valor");
-//         }
-//     }
+    // public static void CompararCartas(Carta c1, Carta c2) {
+    //     if (c1.Valor > c2.Valor) {
+    //         Console.WriteLine(c1.Nome + " é maior que " + c2.Nome);
+    //     } else if ((c1.Valor < c2.Valor)) {
+    //         Console.WriteLine(c2.Nome + " é maior que " + c1.Nome);
+    //     } else if ((c1.Valor == c2.Valor) && (c1.Naipe == c2.Naipe)) {
+    //         Console.WriteLine("Carta 1 e carta 2 são a mesma carta: " + c1.Nome);
+    //     } else {
+    //         Console.WriteLine(c1.Nome + " e " + c2.Nome + " têm o mesmo valor");
+    //     }
+    // }
 
 //     public static void GerarCartas() {
 //         Random rand = new Random();

@@ -6,11 +6,6 @@ public class Mesa {
     public Carta[,] Posicoes = new Carta[2, 3];
 
     public Mesa() {
-        // for (int i = 0; i < Posicoes.GetLength(0); i++) {
-        //     for (int j = 0; j < Posicoes.GetLength(1); j++) {
-        //         Posicoes[i, j] = JogadoresDaMesa[i].ListaDeCartas.ElementAt(j);
-        //     }
-        // }
     }
 
     public override string ToString() {
@@ -28,10 +23,14 @@ public class Mesa {
             }
             sb.AppendLine();
         }
-        sb.AppendLine("///////////////////////////////////////////////////////////////////////////");
+        sb.AppendLine();
         foreach(Jogador j in JogadoresDaMesa) {
-            sb.AppendLine(j.ToString());
-            sb.AppendLine("------------------------------------------------------");
+            if (j.JogadorPrincipal == true) {
+                sb.AppendLine("Jogador principal");
+                sb.AppendLine(j.ToString());
+                sb.AppendLine("---------------------------------");
+                sb.AppendLine();
+            }
         }
 
         return sb.ToString();

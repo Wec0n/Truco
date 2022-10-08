@@ -37,4 +37,8 @@ public class Carta {
 
         return Valor.Equals(outra.Valor) && Naipe.Equals(outra.Naipe);
     }
+
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
 }
