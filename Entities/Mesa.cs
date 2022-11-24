@@ -25,12 +25,13 @@ public class Mesa {
         }
         sb.AppendLine();
         foreach(Jogador j in JogadoresDaMesa) {
-            if (j.JogadorPrincipal == true) {
-                sb.AppendLine("Jogador principal");
-                sb.AppendLine(j.ToString());
-                sb.AppendLine("---------------------------------");
-                sb.AppendLine();
-            }
+            sb.AppendLine(j.ToString());
+            // if (j.JogadorPrincipal == true) {
+            //     sb.AppendLine("Jogador principal");
+            //     sb.AppendLine(j.ToString());
+            //     sb.AppendLine("---------------------------------");
+            //     sb.AppendLine();
+            // }
         }
 
         return sb.ToString();

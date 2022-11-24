@@ -7,6 +7,7 @@ public class Jogador {
     public bool Flor { get; set; }
     public Mesa Mesa { get; set; }
     public bool JogadorPrincipal { get; set; }
+    public int Pontuacao { get; set; }
 
     public Jogador(Mesa mesa) {
         Mesa = mesa;
@@ -30,10 +31,10 @@ public class Jogador {
             sb.AppendLine("INDEX DA CARTA: " + ListaDeCartas.IndexOf(c));
         }
 
-
         sb.AppendLine("Pontos: " + PontosDoJogador);
         sb.AppendLine("Tem flor: " + Flor);
         sb.AppendLine("É jogador principal? " + JogadorPrincipal);
+        sb.AppendLine("Pontuação: ".ToUpper() + Pontuacao);
 
         return sb.ToString();
     }

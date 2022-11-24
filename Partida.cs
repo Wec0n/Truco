@@ -56,7 +56,7 @@ public class Partida {
         jogador.PontosDoJogador += total;
     }
 
-    public void Teste() {
+    public void GerenciarJogadas() {
         Jogador JogadorParaContagemDeCarta = null;
         MesaDaJogada.JogadoresDaMesa.ForEach(ParametroContagemCartasJogadorPrincipal => {
             if (ParametroContagemCartasJogadorPrincipal.JogadorPrincipal == true) {
@@ -79,23 +79,34 @@ public class Partida {
                     c2 = j.ListaDeCartas[CartaDoAdversario];
                     j.JogarCarta(CartaDoAdversario);
                 }
-                Console.WriteLine(this.MesaDaJogada);
                 if (c1 != null && c2 != null) {
-                    CompararCartas(c1, c2);
+                    CompararCartas(c1, c2, j);
                 }
+            Console.WriteLine(this.MesaDaJogada);
             }
         }
     }
 
-    public void CompararCartas(Carta c1, Carta c2) {
+    public void CompararCartas(Carta c1, Carta c2, Jogador j) {
         if (c1.Valor > c2.Valor) {
-            Console.WriteLine(c1.Nome + " é maior que " + c2.Nome);
-        } else if ((c1.Valor < c2.Valor)) {
-            Console.WriteLine(c2.Nome + " é maior que " + c1.Nome);
-        } else if ((c1.Valor == c2.Valor) && (c1.Naipe == c2.Naipe)) {
-            Console.WriteLine("Carta 1 e carta 2 são a mesma carta: " + c1.Nome);
-        } else {
-            Console.WriteLine(c1.Nome + " e " + c2.Nome + " têm o mesmo valor");
+            MesaDaJogada.JogadoresDaMesa.ForEach(x => {
+                if (x.JogadorPrincipal == true) {
+                    x.Pontuacao++;
+                }
+            });
+        
+        }
+
+        if (c2.Valor > c1.Valor) {
+            MesaDaJogada.JogadoresDaMesa.ForEach(x => {
+                if (x.JogadorPrincipal == false) {
+                    x.Pontuacao++;
+                }
+            });
+        }
+
+        if (c1.Valor == c2.Valor) {
+            j.Pontuacao++;
         }
     }
 
@@ -107,3 +118,4 @@ public class Partida {
         return sb.ToString();
     }
 }
+
